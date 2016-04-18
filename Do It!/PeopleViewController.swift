@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PeopleViewController.swift
 //  Do It!
 //
 //  Created by James Feng on 4/17/16.
@@ -9,22 +9,23 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController, UITableViewDataSource {
+class PeopleViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-     var tasks = [NSManagedObject]()
+    var people = [NSManagedObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        title = "To Do"
+
+        // Do any additional setup after loading the view.
+        title = "People"
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
-    
+
     func tableView(tableView: UITableView,
         numberOfRowsInSection section: Int) -> Int {
-            return tasks.count
+            return people.count
     }
     
     func tableView(tableView: UITableView,
@@ -34,9 +35,9 @@ class ViewController: UIViewController, UITableViewDataSource {
             let cell =
             tableView.dequeueReusableCellWithIdentifier("Cell")
             
-            let aTask = tasks[indexPath.row]
+            let aPerson = people[indexPath.row]
             
-            cell!.textLabel!.text = aTask.valueForKey("task") as? String
+            cell!.textLabel!.text = aPerson.valueForKey("person") as? String
             
             return cell!
     }
@@ -45,20 +46,20 @@ class ViewController: UIViewController, UITableViewDataSource {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let context:NSManagedObjectContext = appDel.managedObjectContext
-            context.deleteObject(tasks[indexPath.row] as NSManagedObject)
-            tasks.removeAtIndex(indexPath.row)
+            context.deleteObject(people[indexPath.row] as NSManagedObject)
+            people.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @IBAction func addToDo(sender: AnyObject) {
-        let alert = UIAlertController(title: "New Task",
-            message: "Add a new task",
+    
+    @IBAction func addPeople(sender: AnyObject) {
+        let alert = UIAlertController(title: "New Connection",
+            message: "Add a new connection",
             preferredStyle: .Alert)
         
         let saveAction = UIAlertAction(title: "Save",
@@ -66,7 +67,7 @@ class ViewController: UIViewController, UITableViewDataSource {
             handler: { (action:UIAlertAction) -> Void in
                 
                 let textField = alert.textFields!.first
-                self.saveTask(textField!.text!)
+                self.savePerson(textField!.text!)
                 self.tableView.reloadData()
         })
         
@@ -87,7 +88,7 @@ class ViewController: UIViewController, UITableViewDataSource {
             completion: nil)
     }
     
-    func saveTask(task: String) {
+    func savePerson(person: String) {
         //1
         let appDelegate =
         UIApplication.sharedApplication().delegate as! AppDelegate
@@ -95,20 +96,20 @@ class ViewController: UIViewController, UITableViewDataSource {
         let managedContext = appDelegate.managedObjectContext
         
         //2
-        let entity =  NSEntityDescription.entityForName("TaskEntity",
+        let entity =  NSEntityDescription.entityForName("PersonEntity",
             inManagedObjectContext:managedContext)
         
-        let aTask = NSManagedObject(entity: entity!,
+        let aPerson = NSManagedObject(entity: entity!,
             insertIntoManagedObjectContext: managedContext)
         
         //3
-        aTask.setValue(task, forKey: "task")
+        aPerson.setValue(person, forKey: "person")
         
         //4
         do {
             try managedContext.save()
             //5
-            tasks.append(aTask)
+            people.append(aPerson)
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
         }
@@ -124,16 +125,15 @@ class ViewController: UIViewController, UITableViewDataSource {
         let managedContext = appDelegate.managedObjectContext
         
         //2
-        let fetchRequest = NSFetchRequest(entityName: "TaskEntity")
+        let fetchRequest = NSFetchRequest(entityName: "PersonEntity")
         
         //3
         do {
             let results =
             try managedContext.executeFetchRequest(fetchRequest)
-            tasks = results as! [NSManagedObject]
+            people = results as! [NSManagedObject]
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
     }
 }
-

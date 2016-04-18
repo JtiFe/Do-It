@@ -15,6 +15,8 @@
 		7F3FA43E1CC42C9B00972943 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F3FA43C1CC42C9B00972943 /* LaunchScreen.storyboard */; };
 		7F3FA4491CC42C9B00972943 /* Do_It_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FA4481CC42C9B00972943 /* Do_It_Tests.swift */; };
 		7F3FA4541CC42C9B00972943 /* Do_It_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FA4531CC42C9B00972943 /* Do_It_UITests.swift */; };
+		7F3FA4621CC42DB500972943 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FA4611CC42DB500972943 /* EventViewController.swift */; };
+		7F3FA4641CC42DC000972943 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FA4631CC42DC000972943 /* PeopleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		7F3FA44F1CC42C9B00972943 /* Do It!UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Do It!UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F3FA4531CC42C9B00972943 /* Do_It_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Do_It_UITests.swift; sourceTree = "<group>"; };
 		7F3FA4551CC42C9B00972943 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F3FA4611CC42DB500972943 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		7F3FA4631CC42DC000972943 /* PeopleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,8 @@
 			children = (
 				7F3FA4301CC42C9B00972943 /* AppDelegate.swift */,
 				7F3FA4321CC42C9B00972943 /* ViewController.swift */,
+				7F3FA4611CC42DB500972943 /* EventViewController.swift */,
+				7F3FA4631CC42DC000972943 /* PeopleViewController.swift */,
 				7F3FA4341CC42C9B00972943 /* Main.storyboard */,
 				7F3FA43A1CC42C9B00972943 /* Assets.xcassets */,
 				7F3FA43C1CC42C9B00972943 /* LaunchScreen.storyboard */,
@@ -259,7 +265,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F3FA4641CC42DC000972943 /* PeopleViewController.swift in Sources */,
 				7F3FA4331CC42C9B00972943 /* ViewController.swift in Sources */,
+				7F3FA4621CC42DB500972943 /* EventViewController.swift in Sources */,
 				7F3FA4311CC42C9B00972943 /* AppDelegate.swift in Sources */,
 				7F3FA4391CC42C9B00972943 /* Do_It_.xcdatamodeld in Sources */,
 			);
